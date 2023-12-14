@@ -41,14 +41,14 @@ export abstract class ServerActions {
    */
   abstract get(query: QueryContext): Promise<string>;
 
-  put(
+  abstract put(
     pathString: string,
     data: unknown,
     onComplete?: (a: string, b: string) => void,
     hash?: string
   ) {}
 
-  merge(
+  abstract merge(
     pathString: string,
     data: unknown,
     onComplete: (a: string, b: string | null) => void,
@@ -59,30 +59,30 @@ export abstract class ServerActions {
    * Refreshes the auth token for the current connection.
    * @param token - The authentication token
    */
-  refreshAuthToken(token: string) {}
+  abstract refreshAuthToken(token: string) {}
 
   /**
    * Refreshes the app check token for the current connection.
    * @param token The app check token
    */
-  refreshAppCheckToken(token: string) {}
+  abstract refreshAppCheckToken(token: string) {}
 
-  onDisconnectPut(
+  abstract onDisconnectPut(
     pathString: string,
     data: unknown,
     onComplete?: (a: string, b: string) => void
   ) {}
 
-  onDisconnectMerge(
+  abstract onDisconnectMerge(
     pathString: string,
     data: unknown,
     onComplete?: (a: string, b: string) => void
   ) {}
 
-  onDisconnectCancel(
+  abstract onDisconnectCancel(
     pathString: string,
     onComplete?: (a: string, b: string) => void
   ) {}
 
-  reportStats(stats: { [k: string]: unknown }) {}
+  abstract reportStats(stats: { [k: string]: unknown }) {}
 }
