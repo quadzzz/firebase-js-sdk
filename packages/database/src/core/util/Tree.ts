@@ -220,11 +220,11 @@ function treeUpdateParents<T>(tree: Tree<T>) {
 function treeUpdateChild<T>(tree: Tree<T>, childName: string, child: Tree<T>) {
   const childEmpty = treeIsEmpty(child);
   const childExists = contains(tree.node.children, childName);
-  if (childEmpty && childExists) {
+  if (childEmpty == true && childExists == true) {
     delete tree.node.children[childName];
     tree.node.childCount--;
     treeUpdateParents(tree);
-  } else if (!childEmpty && !childExists) {
+  } else if (childEmpty !== true && childExists !== true) {
     tree.node.children[childName] = child.node;
     tree.node.childCount++;
     treeUpdateParents(tree);
