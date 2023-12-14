@@ -35,10 +35,8 @@ const createStoragefor = function (
   try {
     // NOTE: just accessing "localStorage" or "window['localStorage']" may throw a security exception,
     // so it must be inside the try/catch.
-    if (
-      typeof window !== 'undefined' &&
-      typeof window[domStorageName] !== 'undefined'
-    ) {
+     if (typeof window !== 'undefined' && domStorageName in window) 
+   {
       // Need to test cache. Just because it's here doesn't mean it works
       const domStorage = window[domStorageName];
       domStorage.setItem('firebase:sentinel', 'cache');
